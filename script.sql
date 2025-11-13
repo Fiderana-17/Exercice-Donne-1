@@ -1,9 +1,4 @@
--- 1
-SELECT id, first_name, last_name
-FROM employees
-WHERE team_id IS NULL;
-
-
--- 2
-SELECT id, first_name, last_name
-FROM employees
+SELECT e.id, e.first_name, e.last_name
+FROM Employee e
+LEFT JOIN belong b ON e.id = b.employee_id
+WHERE b.team_id IS NULL;
