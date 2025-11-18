@@ -15,3 +15,19 @@ JOIN take tk ON l.id = tk.leave_id
 JOIN Employee e ON tk.employee_id = e.id
 LEFT JOIN belong b ON e.id = b.employee_id
 LEFT JOIN Team t ON b.team_id = t.id;
+
+
+SELECT contract_type, COUNT(id) AS number_of_employees
+FROM employee 
+GROUP BY contract_type;
+
+
+SELECT COUNT(DISTINCT e.id)
+FROM employee e
+JOIN "leave" l ON e.id = l.employee_id
+WHERE l.start_date <= CURRENT_DATE AND l.end_date >= CURRENT_DATE;
+
+
+LEFT JOIN team t ON t.id = e.team_id
+JOIN "leave" l on e.id = l.employee_id
+WHERE l.start_date <= CURRENT_DATE and l.end_date >= CURRENT_DATE;
